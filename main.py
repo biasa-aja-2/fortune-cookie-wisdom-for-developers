@@ -10,12 +10,15 @@ LINE = (
     "The bug is never in the code you suspect; "
     "it is in the code you trusted."
 )
+# 72 characters, one balanced sentence: the turn is that the code you
+# trusted — the part you never questioned — is exactly where the bug hides.
 
 
 def main() -> None:
     text = LINE.strip()
     assert 1 <= len(text) <= 120, "entry must be 1-120 characters"
     assert text.strip(), "entry must not be only whitespace"
+    assert "\n" not in text, "fortune must stay one line"
     os.makedirs("/output", exist_ok=True)
     path = "/output/entry.txt"
     with open(path, "w", encoding="utf-8") as f:
